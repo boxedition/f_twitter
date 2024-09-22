@@ -4,6 +4,7 @@ import 'package:flutter_twitter/pages/setttings_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
   //Build UI
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class MyDrawer extends StatelessWidget {
               Divider(
                 color: Theme.of(context).colorScheme.secondary,
               ),
-          
+
               //Home Link
               MyDrawerTile(
                 title: "Home",
@@ -42,16 +43,16 @@ class MyDrawer extends StatelessWidget {
                 onTap: () {
                   // Pop Navigator
                   Navigator.pop(context);
-          
+
                   //Route to new Page
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SettingsPage(),
+                        builder: (context) => const SettingsPage(),
                       ));
                 },
               ),
-          
+
               //Settings Link
               //Logout
               //...

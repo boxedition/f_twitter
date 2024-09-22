@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_twitter/components/buttons/button.dart';
 import 'package:flutter_twitter/components/inputs/text_field.dart';
 
-/***
- * Login page
- * 
- * On this page a user can log in with:
- * - user
- * - password
- * --------------------------------------
- * Once the user is authenticated will be redirected to home page
- * 
- * If the user doesn't have and account, they can go to the register page from here.
- */
+/// *
+/// Login page
+///
+/// On this page a user can log in with:
+/// - user
+/// - password
+/// --------------------------------------
+/// Once the user is authenticated will be redirected to home page
+///
+/// If the user doesn't have and account, they can go to the register page from here.
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final void Function() ontap;
+
+  const LoginPage({super.key, required this.ontap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -25,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   //Text Controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,12 +116,12 @@ class _LoginPageState extends State<LoginPage> {
                           color: Theme.of(context).colorScheme.primary),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print("Aderir?");
-                      },
+                      onTap: widget.ontap,
                       child: Text(
                         "Adere se quiseres!",
-                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],

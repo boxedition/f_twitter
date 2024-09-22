@@ -1,16 +1,15 @@
 import "package:flutter/material.dart";
 
-/***
- * MySettingsTile
- * 
- * Dado que o widget vai ser reutilizado várias vezes como "TILE"/"Button" na SettingsPage.
- * -----------------------------------
- * Propriedades:
- * 
- * - Titulo
- * - Action
- * 
- */
+/// *
+/// MySettingsTile
+///
+/// Dado que o widget vai ser reutilizado várias vezes como "TILE"/"Button" na SettingsPage.
+/// -----------------------------------
+/// Propriedades:
+///
+/// - Titulo
+/// - Action
+///
 
 class MySettingsTile extends StatelessWidget {
   final String title;
@@ -31,7 +30,7 @@ class MySettingsTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(15)),
       margin: const EdgeInsets.only(left: 25, right: 25, top: 10),
       //Padding Inside
-      padding: EdgeInsets.all(25),
+      padding: const EdgeInsets.all(25),
       //Row
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-/***
- * MyDrawerTile
- * 
- * Dado que o widget vai ser reutilizado várias vezes como "TILE"/"Button"  no MyDrawer.
- * -----------------------------------
- * Propriedades:
- * 
- * - Titulo
- * - Icon
- * - Function/CallBack
- * 
- */
+/// *
+/// MyDrawerTile
+///
+/// Dado que o widget vai ser reutilizado várias vezes como "TILE"/"Button"  no MyDrawer.
+/// -----------------------------------
+/// Propriedades:
+///
+/// - Titulo
+/// - Icon
+/// - Function/CallBack
+///
 
 class MyDrawerTile extends StatelessWidget {
   final String title;
   final IconData icon;
   final void Function()? onTap;
+
   const MyDrawerTile({
     super.key,
     required this.title,

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_twitter/themes/dark_mode.dart';
 import 'package:flutter_twitter/themes/light_mode.dart';
 
-/***
- * This helps the change of theme of the app
- */
+/// *
+/// This helps the change of theme of the app
 
 class ThemeProvider extends ChangeNotifier {
   //Set default theme to Light
@@ -12,7 +11,7 @@ class ThemeProvider extends ChangeNotifier {
 
   //Getter
   ThemeData get themeData => _themeData;
-  
+
   //Get Bool of darkmode
   bool get isDarkMode => _themeData == darkMode;
 

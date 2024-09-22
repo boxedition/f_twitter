@@ -4,13 +4,12 @@ import 'package:flutter_twitter/components/settings/tile.dart';
 import 'package:flutter_twitter/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-/***
- * Settings Page
- * 
- * - Dark mode
- * - Utilizadores Bloquiados
- * - Configuraçao de Conta
- */
+/// *
+/// Settings Page
+///
+/// - Dark mode
+/// - Utilizadores Bloquiados
+/// - Configuraçao de Conta
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
@@ -18,7 +17,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: const Text("Settings"),
         foregroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Column(

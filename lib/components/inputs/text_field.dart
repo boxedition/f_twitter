@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-/***
- * Text Field
- * A box where a input can be inserted
- * ------------------------------------------
- * 
- * To use this widget you need:
- * - Text Controller (To access what the user typed)
- * - Hint Text ("Ajuda" Descritiva)
- * - Hide -> Obscure text (Obscura input)
- */
+/// *
+/// Text Field
+/// A box where a input can be inserted
+/// ------------------------------------------
+///
+/// To use this widget you need:
+/// - Text Controller (To access what the user typed)
+/// - Hint Text ("Ajuda" Descritiva)
+/// - Hide -> Obscure text (Obscura input)
 class MyTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;

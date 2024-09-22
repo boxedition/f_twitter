@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-/**
- * Button
- * 
- * A simple Button
- * --------------------------
- * To use this wqidgete you need
- * - Text
- * - "Function"/"Callback"
- */
+/// Button
+///
+/// A simple Button
+/// --------------------------
+/// To use this wqidgete you need
+/// - Text
+/// - "Function"/"Callback"
 
 class MyButton extends StatelessWidget {
   final String text;
   final void Function()? onTap;
+
   const MyButton({
     super.key,
     required this.text,
@@ -32,7 +31,7 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 15,
             ),
