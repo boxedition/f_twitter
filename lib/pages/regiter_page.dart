@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_twitter/services/auth/service.dart';
 
 import '../components/buttons/button.dart';
 import '../components/inputs/text_field.dart';
+import '../components/loading/circle.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function() ontap;
@@ -13,10 +15,28 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _auth = AuthService();
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwController = TextEditingController();
   final TextEditingController pwConfirmController = TextEditingController();
+
+  void register() async {
+    // Show Loading circle
+    showLoadingCircle(context);
+    // Attempt Login
+    try {
+      await _auth.registerEmail(emailController.text, pwController.text);
+
+      // finishs loading
+      if (mounted) hideLoadingCircle(context);
+    } catch (e) {
+      // finishs loading
+      if (mounted) hideLoadingCircle(context);
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,9 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //Sign in Button
                 MyButton(
                   text: "Registar",
-                  onTap: () {
-                    print("Estou a tentar registar...");
-                  },
+                  onTap: register,
                 ),
                 const SizedBox(
                   height: 15,

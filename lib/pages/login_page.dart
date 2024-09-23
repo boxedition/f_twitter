@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_twitter/components/buttons/button.dart';
 import 'package:flutter_twitter/components/inputs/text_field.dart';
+import 'package:flutter_twitter/components/loading/circle.dart';
+import 'package:flutter_twitter/services/auth/service.dart';
 
 /// *
 /// Login page
@@ -23,9 +26,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _auth = AuthService();
+
   //Text Controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwController = TextEditingController();
+
+  void login() async {
+    // Show Loading circle
+    showLoadingCircle(context);
+    // Attempt Login
+    try {
+      await _auth.loginEmail(emailController.text, pwController.text);
+
+      // finishs loading
+      if (mounted) hideLoadingCircle(context);
+    } catch (e) {
+      // finishs loading
+      if (mounted) hideLoadingCircle(context);
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,9 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                 //Sign in Button
                 MyButton(
                   text: "Entrar",
-                  onTap: () {
-                    print("Estou a tentar entrar...");
-                  },
+                  onTap: login,
                 ),
                 const SizedBox(
                   height: 15,
