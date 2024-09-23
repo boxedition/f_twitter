@@ -23,18 +23,35 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController pwConfirmController = TextEditingController();
 
   void register() async {
-    // Show Loading circle
-    showLoadingCircle(context);
-    // Attempt Login
-    try {
-      await _auth.registerEmail(emailController.text, pwController.text);
+    if (pwController.text == pwConfirmController.text) {
+      // Show Loading circle
+      showLoadingCircle(context);
+      // Attempt Login
+      try {
+        await _auth.registerEmail(emailController.text, pwController.text);
 
-      // finishs loading
-      if (mounted) hideLoadingCircle(context);
-    } catch (e) {
-      // finishs loading
-      if (mounted) hideLoadingCircle(context);
-      print(e.toString());
+        // finishs loading
+        if (mounted) hideLoadingCircle(context);
+      } catch (e) {
+        // finishs loading
+        if (mounted) hideLoadingCircle(context);
+
+        if (mounted) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text(e.toString()),
+            ),
+          );
+        }
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Passwords são diferentes"),
+        ),
+      );
     }
   }
 
