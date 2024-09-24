@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_twitter/components/drawer/tile.dart';
+import 'package:flutter_twitter/pages/profile_page.dart';
 import 'package:flutter_twitter/pages/setttings_page.dart';
 import 'package:flutter_twitter/services/auth/service.dart';
 
@@ -42,6 +43,24 @@ class MyDrawer extends StatelessWidget {
                 onTap: () {
                   // Pop Navigator
                   Navigator.pop(context);
+                },
+              ),
+              MyDrawerTile(
+                title: "Profile",
+                icon: Icons.person,
+                onTap: () {
+                  // Pop menu drawer
+                  Navigator.pop(context);
+
+                  // Go to Profile Page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(
+                        uid: _auth.getCurrentUid(),
+                      ),
+                    ),
+                  );
                 },
               ),
               MyDrawerTile(

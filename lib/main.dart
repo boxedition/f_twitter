@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_twitter/firebase_options.dart';
+import 'package:flutter_twitter/services/auth/database/provider.dart';
 import 'package:flutter_twitter/services/auth/gate.dart';
 import 'package:flutter_twitter/services/auth/login_register.dart';
 import 'package:flutter_twitter/themes/theme_provider.dart';
@@ -10,8 +11,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(ChangeNotifierProvider(
-    create: (context) => ThemeProvider(),
+  runApp(MultiProvider(
+    providers: [
+      // Theme Provider
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      // Database Provider
+      ChangeNotifierProvider(create: (context) => DatabaseProvider()),
+    ],
     child: const MyApp(),
   ));
 }

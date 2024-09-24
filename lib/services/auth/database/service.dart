@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_twitter/models/user.dart';
+import 'package:flutter_twitter/services/auth/service.dart';
 
 /// Database service
 ///
@@ -54,6 +55,18 @@ class DatabaseService {
     } catch (e) {
       print(e);
       return null;
+    }
+  }
+
+  // Update user bio
+  Future<void> updateUserBiotoFirebase(String bio) async {
+    String uid = AuthService().getCurrentUid();
+
+    // Attempt to update in firebase
+    try {
+      await _db.collection("Users").doc(uid).update({'bio': bio});
+    } catch (e) {
+      print(e);
     }
   }
 }
