@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_twitter/services/auth/database/service.dart';
 import 'package:flutter_twitter/services/auth/service.dart';
 
 import '../components/buttons/button.dart';
@@ -16,6 +17,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _auth = AuthService();
+  final _db = DatabaseService();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -32,6 +34,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
         // finishs loading
         if (mounted) hideLoadingCircle(context);
+
+        // Once registered create and save user profile in database
+        await _db.saveUserInfoToFirebase(
+            name: nameController.text, email: emailController.text);
       } catch (e) {
         // finishs loading
         if (mounted) hideLoadingCircle(context);
